@@ -18,6 +18,7 @@ import java.util.PriorityQueue;
  (3) 자바에서 우선순위 큐 라이브러리 구현 능력
  */
 import java.util.Scanner;
+import java.util.PriorityQueue;
 
 public class Problem33 {
     public static void main(String[] args){
