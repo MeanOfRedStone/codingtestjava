@@ -1,4 +1,3 @@
-package greedy;
 
 /*
  <문제 32 동전 개수의 최솟값 구하기>
@@ -23,15 +22,13 @@ package greedy;
 
  (2) 큰 수부터 가격이 같거나 작을때까지 탐색. 
   */
-
+package greedy;
 import java.util.Scanner;
-
-
 
 public class Problem32 {
     public static void main(String[] args){
+        //입력
         int n, k;
-
         Scanner sc = new Scanner(System.in);
         //동전의 개수
         n = sc.nextInt();
@@ -43,6 +40,7 @@ public class Problem32 {
         for(int i = 0; i < n; i++){
             coins[i] = sc.nextInt();
         }
+
         //k 보다 작은 동전의 인덱스 찾기
         int min;
         for(min = n - 1; min >= 0 && coins[min] > k; min--){
@@ -54,7 +52,7 @@ public class Problem32 {
             count += k / coins[index];
             k = k % coins[index];
         }
+        //출력
         System.out.println(count);
-        
     }
 }
