@@ -16,6 +16,12 @@ import java.util.PriorityQueue;
  (1) 그리디 알고리즘의 정의에 대한 이해
  (2) 정렬구현할 수 있는가? -> 정렬이 아니라 우선순위 큐를 활용하면 더 간단히 사용할 수 있다.
  (3) 자바에서 우선순위 큐 라이브러리 구현 능력
+
+ <생각하지 못한 점>
+ (1) 그리디 : 어떻게 가장 적은 합이 나오는 짝을 만들 것인가
+ <더해서 작은 수>
+ (2) 자료구조 :우선 순위 큐
+
  */
 import java.util.Scanner;
 import java.util.PriorityQueue;
