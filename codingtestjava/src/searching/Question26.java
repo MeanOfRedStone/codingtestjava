@@ -26,6 +26,7 @@ package searching;
   <잘 몰랐던 부분>
   (1) Queue 완전한 사용법 : 단순히 add, remove만 하면 안됨 (NULL 값때문에)
   (2) Colttecionts sort의 적재적소의 활용 못함 - 35번 문제 참조
+  (3) println 과 print의 차이
   */
 import java.util.*;
 
@@ -48,7 +49,7 @@ public class Question26 {
         visited = new boolean[N+1];
         visited2 = new boolean[N+1];
         //BFS를 위한 queue 생성
-        q = new LinkedList<>();
+        q = new LinkedList<Integer>();
         //노드 초기화
         for(int i = 1; i < N + 1; i++){
             A[i] = new ArrayList<>();
@@ -87,7 +88,7 @@ public class Question26 {
     }
 
     public static void BFS(int i){
-        System.out.print(i + " ");
+        
         q.add(i);
         //어짜피 방문 안한 노드만 넣어줄 거라 필요 없음
         // if(visited2[i]){
@@ -95,17 +96,22 @@ public class Question26 {
         // }
         visited2[i] = true;
         
-        for(int v : A[i]){
-            if(!visited2[v]){
-                q.add(v);
-            }
-            
-        }
+ 
         while(!q.isEmpty()){
-            int temp = q.remove();
-        if(!visited2[temp]){
-            BFS(temp);
-        }
+            //BFS는 일반적으로 큐만 사용 : 내가 사용한 것은 이도저도 아닌 방법
+        //     int temp = q.remove();
+        // if(!visited2[temp]){
+        //     BFS(temp);
+        // }
+            int temp = q.poll();
+            System.out.print(i + " ");
+            for(int v : A[temp]){
+                if(!visited2[v]){
+                    visited2[v] = true;
+                    q.add(v);
+                }
+            }
+
         }
         
         
