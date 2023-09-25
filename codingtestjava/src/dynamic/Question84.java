@@ -38,7 +38,7 @@ package dynamic;
      <출제 포인트>
      (1) 동적 계획법 이해 및 구현
      -1 왜 바텀업으로 햇는지 : 하나 하나 비교하기에는 바텀업이 좋다.
-     -2 톱다운도 가능
+     -2 톱다운도 가능 : 대신 비교문이 많아진다.
      */
      /*
       <몰랐던 점>
@@ -48,7 +48,6 @@ import java.util.*;
 public class Question84 {
     static int N;
     static int D[];
-    static int one[];
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
@@ -67,15 +66,7 @@ public class Question84 {
                 D[i] = Math.min(D[i], D[i / 3] + 1);
             }
         }
-        System.out.println(D[N]); 
-
-        one = new int[N+1];
-        one[1] = 0;
+        System.out.println(D[N]);
     }
 
-    public static int oneMaker(int x){
-        retur one[1];
-
-        
-    }
 }
