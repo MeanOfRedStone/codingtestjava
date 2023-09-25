@@ -51,10 +51,10 @@ public class Question85 {
             P[i] = sc.nextInt();
         }
         for(int i = N; i > 0; i--){ //탑 - 다운
-            if(i + T[i] > N + 1){
+            if(i + T[i] > N + 1){ //오늘 시작되는 상담을 했을 때 퇴사일까지 끝나지 않는 경우
                 D[i] = D[i+1];
             }else {
-                D[i] = Math.max(D[i + 1], P[i] + D[i + T[i]]);
+                D[i] = Math.max(D[i + 1], P[i] + D[i + T[i]]); //오늘 시작되는 상담을 했을 때 퇴사일 안에 끝나는 경우. 인덱스로 크기 비교를 진행. 전자 : 오늘 상담을 안하는 경우 / 후자 오늘 상담을 햇을 때 + 이후 최댓값을 더함.
             }
         }
         System.out.println(D[1]);
