@@ -9,6 +9,13 @@ import java.util.*;
     A를 B로 바꾸는데 필요한 연산의 최솟값을 구해보자.
  */
 
+ /*
+  -1 그리디?
+  ~ 하는데 최솟값을 구하여라 : 최적해
+
+  -2. 연산 2개는 배타적 (1) -1 , /10 (2) / 2 -> 하나는 무조건 홀수 하나는 무조건 짝수여야만 가능하다.
+  */
+
 /*
  B (1) A로 나눈다
    
@@ -69,14 +76,11 @@ public class Beakjoon16953 {
         while(B > A){
             if(B % 2 == 0){
                 B = B / 2;
-                System.out.println(B);
                 cnt += 1;
             } else if( (B -1) % 10 == 0 ){
                 B = (B - 1) / 10;
-                System.out.println(B);
                 cnt += 1;
             } else {
-                System.out.println(B);
                 break;
             }
         }
