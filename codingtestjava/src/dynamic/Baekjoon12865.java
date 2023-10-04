@@ -1,10 +1,39 @@
 package dynamic;
 
 /*
+무게를 기준으로 DP를 만들자
+-1 동적 계획법
+ 작은 부분으로 큰 부분의 문제를 어떻게 해결할 것인가
+ N 값이 문제를 부분 문제로 나누는 역할을 해야함
 
-w 4  6  4  3  5
-v 7  13 8  6  12
+ -2 비교 대상이 여러개라면 그 대상을 기준으로 N차원 행렬 목표값을 값 안에 넣어준다.
 
+N = 4, K = 7
+w  6  4  3  5
+v  13 8  6  12
+
+for(int i = 1; i < N + 1; i++){
+    int weight = bags[i].w;
+    int value = bags[i].v;
+    for(int j = 1; j < K + 1; j++){
+        D[i][j] = D[i-1][j];
+        if(j - weight >= 0){
+            D[i][j] = Math.max(D[i-1][j], D[i-1][j - weight] + value);
+        }
+    }
+}
+
+D  1  2  3  4  5  6  7 (k)  
+1  0  0  0  0  0  13 13
+2  0  0  0  8  8  13 13
+3  0  0  6  8  8  13 14
+4 
+(N)
+
+
+
+4  6   6  
+7  13  13
 */
 
 
@@ -32,50 +61,20 @@ public class Baekjoon12865 {
             bags[i] = item;
         }
         //점화식 배열
-        int D[][] = new int[N + 1][N+1];
+        int D[][] = new int[N + 1][K+1];
         
-        //가방의 가치의 합을 담는 배열 D[x][0]   | 무게의 합 D[x][1]
-        D[0][0] = 0;
-        D[0][1] = 0;
-        if(bags[1].w <= K){
-            D[1][0] = bags[1].v;
-            D[1][1] = bags[1].w;
-        } else {
-            D[1][0] = 0;
-            D[1][0] = 0;
-        }
-        
-        
-
-        for(int i = 2; i < N + 1; i++){
-            if(bags[i].w < K){
-                if(D[i-1][1] + bags[i].w <= K){
-                    //현재 가치가 가장 큰 물건의 무게
-                    D[i][1] = D[i-1][1] + bags[i].w;
-                    //현재 가치가 가장 큰 물건의 합
-                    D[i][0] = D[i-1][0] + bags[i].v;
-                } else{
-                    //(1) 무게 더해서 < K 안될때까지 찾는 경우의 최대 가치 (2) 이전 단계의 최대 무게  (3) 현재 가치
-                    for(int j = i -1; j >= 0; j--){
-                        if(D[j][1] + bags[i].w <= K) {
-                            D[i][0] = Math.max(bags[i].v, Math.max(D[j][0] + bags[i].v, D[i-1][0]));
-                            if(D[i][0] == bags[i].v){
-                                D[i][1] = bags[i].w;
-                            } else if(D[i][0] == D[j][0] + bags[i].v){
-                                D[i][1] = D[j][1] + bags[i].w;
-                            } else{
-                                D[i][1] = D[i-1][1];
-                            }
-                            break;
-                        }
-                        
-                    }
+        for(int i = 1; i < N + 1; i++){
+            int weight = bags[i].w;
+            int value = bags[i].v;
+            for(int j = 1; j < K + 1; j++){
+                D[i][j] = D[i-1][j];
+                if(j - weight >= 0){
+                    D[i][j] = Math.max(D[i-1][j], D[i-1][j - weight] + value);
                 }
             }
-
-            
         }
-        System.out.println(D[N][0]);
+
+        System.out.println(D[N][K]);
     }
 }
 
