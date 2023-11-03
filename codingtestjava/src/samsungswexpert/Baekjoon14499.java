@@ -1,11 +1,20 @@
 package samsungswexpert;
 
 /*
+ <구현 문제>
+ (1) 요구사항 분석 후 요구 사항에 따라 구조도 먼저 작성하니 한결 작성하기 쉬웠다
+ (2) 디버깅도 훨씬 직관적이었다.
+ 
  <디버깅 상황>
  (1) 아웃오브 어레이
  -> 0부터 시작해서 N 초과하려면 >= N 부터임
 
  (2) 주사위 굴러갈시 항상 4면이 바뀌어야 함
+
+ (3) 주사위 규칙 파악 오류
+ 바닥 면의 수가 0이 아닐때는 칸에 있는 수가 주사위 바닥면으로 복사하고
+ +
+ 칸에 있는 수는 0으로 바꿔야 함
  */
  /*
 
@@ -18,7 +27,7 @@ package samsungswexpert;
 
      <주사위 굴리기 규칙>
      (1) 보드의 숫자가 0 -> 주사위 바닥에 있는 수가 복사
-     (2) 보드의 숫자가 0이 아닌 경우 -> 칸에 있는 수가 주사위 바닥면으로 복사
+     (2) 보드의 숫자가 0이 아닌 경우 -> 칸에 있는 수가 주사위 바닥면으로 복사 + 칸에 있는 수는 0으로 바꿔야 함
 
      <주어진 조건>
      (1) 주사위를 놓은 좌표 (x, y)
@@ -189,6 +198,8 @@ public class Baekjoon14499 {
                 board[nowRow][nowCol] = castVal;
             } else if(boardVal != 0){
                 cast[castBottomIndex] = boardVal;
+                board[nowRow][nowCol] = 0;
+                
             }
 
             //8. 주사위 상단의 값 출력
@@ -198,5 +209,4 @@ public class Baekjoon14499 {
             System.out.println(printCast);
         }
     }
-   
 }
