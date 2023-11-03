@@ -101,7 +101,7 @@ public class Baekjoon14503 {
         int r = Integer.parseInt(robotInformation[0]);
         int c = Integer.parseInt(robotInformation[1]);
         int d = Integer.parseInt(robotInformation[2]);
-
+        
         room = new int[N][M];
         for(int row = 0; row < N; row++){
             String[] roomInformation = br.readLine().split(" ");
