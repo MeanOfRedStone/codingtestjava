@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Baekjoon10986",
+            "request": "launch",
+            "mainClass": "prefixSum.Baekjoon10986",
+            "projectName": "codingtestjava_e8572fd6"
+        },
+        {
+            "type": "java",
             "name": "Baekjoon11660",
             "request": "launch",
             "mainClass": "prefixSum.Baekjoon11660",
