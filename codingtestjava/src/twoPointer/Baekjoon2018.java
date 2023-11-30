@@ -2,8 +2,11 @@ package twoPointer;
 /*
  <투 포인터>
  (1) 시작 인덱스, 종료 인덱스, sum
- 
- (2) 이동 원칙
+    index는 부분합의 범위를 나타내준다.
+
+ (2) 투포인트의 시간 복잡도는 O(N) 이다
+
+ (3) 이동 원칙
   sum > N : sum = sum - start_index; start_index++;
   sum < N : end_index++; sum = sum + end_index;
   sum == N : end_index++; sum = sum + end_index; count++;
@@ -30,28 +33,21 @@ public class Baekjoon2018{
                 count++;
                 end_index++;
                 sum = sum + end_index;
-                printIndex("sum == N");
                 continue;
             }
 
             if(sum > N){
                 sum = sum - start_index;
                 start_index++;
-                printIndex("sum > N");
                 continue;
             }
 
             if(sum < N) {
                 end_index++;
                 sum = sum + end_index;
-                printIndex("sum < N");
                 continue;
             }
         }
         System.out.println(count);
-    }
-
-    public static void printIndex(String status) {
-        System.out.println(status + " : start_index, end_index, sum : " + start_index + ", " + end_index + ", " + sum);
     }
 }
