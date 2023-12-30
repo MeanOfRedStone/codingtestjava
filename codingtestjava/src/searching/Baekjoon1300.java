@@ -11,6 +11,9 @@ package searching;
 
    - count == K
     -> middle 보다 작은 수가 K개 이므로 end값 더 더 작아지면 더이상 answer 값은 변화되지 않음
+
+ 3. 이분 탐색도 특정한 조건의 값을 찾는 탐색이다
+즉 도구이다!
  */
 
 import java.io.*;
